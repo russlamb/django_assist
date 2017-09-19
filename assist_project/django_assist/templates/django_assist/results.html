@@ -1,0 +1,9 @@
+{% if step_list %}
+    <ul>
+    {% for step in step_list %}
+        <li><a href="/django_assist/{{ project.id }}/step/">{{ step.step_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No steps are available.</p>
+{% endif %}
