@@ -8,8 +8,8 @@ class TimeStampedModel(models.Model):
     An abstract base class model that provides self-
     updating ``created`` and ``modified`` fields.
     """
-    created = models.DateTimeField('CreatedOn',auto_now_add=True)
-    modified = models.DateTimeField('ModifiedOn',auto_now=True)
+    created = models.DateTimeField('CreatedOn', auto_now_add=True)
+    modified = models.DateTimeField('ModifiedOn', auto_now=True)
 
     class Meta:
         abstract = True
@@ -17,35 +17,39 @@ class TimeStampedModel(models.Model):
 
 class Project(TimeStampedModel):
     project_name = models.CharField(max_length=500)
+
     def __str__(self):
         return ("Project {}".format(self.project_name))
 
+
 class StepStatus(models.Model):
     status_name = models.CharField(max_length=20, unique=True)
+
     def __str__(self):
-        return "[{}]'".format(self.status_name)
+        return "[{}]".format(self.status_name)
 
 
 class Step(TimeStampedModel):
     step_name = models.CharField(max_length=200)
-    #status = models.CharField(max_length=50,default="Not Started")
     step_status = models.ForeignKey(StepStatus, null=True)
     step_order = models.IntegerField()
 
-
     def __str__(self):
-        return ("Step {}: {} {}".format(self.step_order,self.step_name,self.step_status))
+        return ("Step {}: {} {}".format(self.step_order, self.step_name, self.step_status))
 
 
 class Command(TimeStampedModel):
     step = models.ForeignKey(Step, on_delete=models.CASCADE)
     command_text = models.CharField(max_length=1000)
     output_text = models.TextField(default="")
+
     def __str__(self):
         return ("Command {}".format(self.command_text))
+
 
 class CommandOutput(TimeStampedModel):
     command = models.ForeignKey(Command, on_delete=models.CASCADE)
     output_text = models.TextField()
+
     def __str__(self):
         return ("Output {}".format(self.output_text))

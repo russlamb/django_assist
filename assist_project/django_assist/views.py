@@ -7,11 +7,11 @@ from .models import Step, Command
 
 class IndexView(generic.ListView):
     template_name = 'django_assist/index.html'
-    context_object_name = 'latest_question_list'
+    context_object_name = 'step_list'
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Step.objects.order_by('step_order')[:5]
+        return Step.objects.order_by('step_order')
 
 
 

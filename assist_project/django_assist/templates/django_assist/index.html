@@ -1,7 +1,7 @@
 {% if step_list %}
     <ul>
     {% for step in step_list %}
-        <li><a href="/django_assist/{{ step.id }}/">{{ step.step_name }}</a></li>
+        <li>Step {{step.step_order }} {{ step.step_status }}: <a href="/django_assist/{{ step.id }}/">{{ step.step_name }}</a> </li>
     {% endfor %}
     </ul>
 {% else %}
