@@ -1,9 +1,9 @@
-{% if project_list %}
+{% if step_list %}
     <ul>
-    {% for project in project_list %}
-        <li><a href="/django_assist/{{ project.id }}/">{{ project.project_name }}</a></li>
+    {% for step in step_list %}
+        <li><a href="/django_assist/{{ step.id }}/">{{ step.step_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No projects are available.</p>
+    <p>No steps are available.</p>
 {% endif %}

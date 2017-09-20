@@ -23,15 +23,18 @@ class Project(TimeStampedModel):
 class StepStatus(models.Model):
     status_name = models.CharField(max_length=20, unique=True)
     def __str__(self):
-        return "StepStatus: {}".format(self.status_name)
+        return "[{}]'".format(self.status_name)
+
 
 class Step(TimeStampedModel):
     step_name = models.CharField(max_length=200)
-    status = models.CharField(max_length=20,default="")
-    step_order = models.IntegerField(default=1)
+    #status = models.CharField(max_length=50,default="Not Started")
+    step_status = models.ForeignKey(StepStatus, null=True)
+    step_order = models.IntegerField()
+
 
     def __str__(self):
-        return ("Step {} [{}]".format(self.step_name,self.status))
+        return ("Step {}: {} {}".format(self.step_order,self.step_name,self.step_status))
 
 
 class Command(TimeStampedModel):
