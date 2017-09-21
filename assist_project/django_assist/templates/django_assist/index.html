@@ -4,12 +4,7 @@
 {% block title %}Django Assistant: Step List {% endblock %}
 
 {% block content %}
-<div class="page-wrapper">
-    <section class="intro" id="zen-intro">
-    <header role="banner">
-			<h1>Django Assistant</h1>
-			<h2>The <abbr title="User Interface">UI</abbr> for Django Commands</h2>
-		</header>
+
 <h3>Steps</h3>
 <div class="explanation" id="zen-explanation" role="article">
     {% if step_list %}
@@ -22,6 +17,5 @@
         <p>No steps are available.</p>
     {% endif %}
 </div>
-</section>
-</div>
+
 {% endblock %}

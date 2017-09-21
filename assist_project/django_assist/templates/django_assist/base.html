@@ -7,10 +7,17 @@
 </head>
 
 <body>
-    
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+    <div class="page-wrapper">
+	    <section class="intro" id="zen-intro">
+	    	<header role="banner">
+				<h1>{% block header %}Django Assistant{% endblock %}</h1>
+				<h2>{% block subheading %}The <abbr title="User Interface">UI</abbr> for Django Commands{% endblock %}</h2>
+			</header>
+		    <div id="content">
+		        {% block content %}{% endblock %}
+		    </div>
+		</section>
+	</div>
     
     <aside id="sidebar" class="sidebar" role="complementary">
     	<div class="design-selection" id="design-selection">

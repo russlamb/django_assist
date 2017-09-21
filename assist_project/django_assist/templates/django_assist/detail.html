@@ -1,4 +1,14 @@
-<h1>{{ step.step_name }}</h1>
+
+
+{% extends "django_assist/base.html" %}
+
+{% block title %}Django Assistant: Step List {% endblock %}
+
+{% block subheading %}Command List{% endblock %}
+
+{% block content %}
+
+<h3>{{ step.step_name }}</h3>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -11,7 +21,7 @@
 <input type="submit" value="Run" />
 </form>
 
-<h3>Previous runs</h3>
+<h4>Previous runs</h4>
 <ul>
     {% for command in step.command_set.all %}
         {% if command.output_text|length > 0 %}
@@ -21,3 +31,5 @@
         {% endif %}
     {% endfor %}
 </ul>
+
+{% endblock %}
