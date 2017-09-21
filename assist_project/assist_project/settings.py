@@ -25,7 +25,7 @@ SECRET_KEY = '*3c(ikm1+cxo48_c^p5+$6__f+ke*hq54(0%14v4&v#3qgukq8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-assist-jahbreeze.c9users.io']
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'assist_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

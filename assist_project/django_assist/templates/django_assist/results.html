@@ -1,9 +1,7 @@
-{% if step_list %}
-    <ul>
-    {% for step in step_list %}
-        <li><a href="/django_assist/{{ project.id }}/step/">{{ step.step_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No steps are available.</p>
-{% endif %}
+<h2>You have run {{ step.step_name }}</h2>
+Check results below
+
+<div class="basic">
+    {% include "./detail.html" %}
+
+</div>

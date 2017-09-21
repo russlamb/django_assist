@@ -41,10 +41,10 @@ class Step(TimeStampedModel):
 class Command(TimeStampedModel):
     step = models.ForeignKey(Step, on_delete=models.CASCADE)
     command_text = models.CharField(max_length=1000)
-    output_text = models.TextField(default="")
+    output_text = models.TextField(default="",blank=True)
 
     def __str__(self):
-        return ("Command {}".format(self.command_text))
+        return ("{} [{}]".format(self.command_text,self.step.step_name))
 
 
 class CommandOutput(TimeStampedModel):

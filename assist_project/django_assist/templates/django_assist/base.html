@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'django_assist/style.css' %}" />
+    <title>{% block title %}Django Assistant: A UI for Django commands{% endblock %}</title>
+</head>
+
+<body>
+    
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <aside id="sidebar" class="sidebar" role="complementary">
+    	<div class="design-selection" id="design-selection">
+    	<nav role="navigation">
+					
+        {% block sidebar %}
+        <ul>
+            <li><a href="/django_assist">Home</a></li>
+            <li><a href="/admin/">Admin</a></li>
+        </ul>
+        {% endblock %}
+        </nav>
+        </div>
+    </aside>
+
+</body>
+</html>

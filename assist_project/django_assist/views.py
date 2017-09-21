@@ -10,7 +10,7 @@ class IndexView(generic.ListView):
     context_object_name = 'step_list'
 
     def get_queryset(self):
-        """Return the last five published questions."""
+        """Return the steps in order."""
         return Step.objects.order_by('step_order')
 
 
@@ -26,7 +26,7 @@ class ResultsView(generic.DetailView):
 def run_step(request, step_id):
     step = get_object_or_404(Step, pk=step_id)
     try:
-        selected_command = step.choice_set.get(pk=request.POST['command'])
+        selected_command = step.command_set.get(pk=request.POST['command'])
     except (KeyError, Command.DoesNotExist):
         # Redisplay the step run form.
         return render(request, 'django_assist/detail.html', {
@@ -34,7 +34,7 @@ def run_step(request, step_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_command.output_text = ""
+        selected_command.output_text = "example"
         selected_command.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
